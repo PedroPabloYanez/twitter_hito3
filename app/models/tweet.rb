@@ -6,6 +6,4 @@ class Tweet < ApplicationRecord
     def retweet_ref
         Tweet.find(self.rt_ref)
     end
-
-    
 end
