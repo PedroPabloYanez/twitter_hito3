@@ -21,8 +21,13 @@ class TweetsController < ApplicationController
   end
   # GET /tweets or /tweets.json
   def index
+    @q = Tweet.ransack(params[:q])
     @tweet = Tweet.new
-    @tweets = Tweet.all.order("created_at DESC").page(params[:page]).per(5)
+    if signed_in?
+      @tweets = User.tweets_for_me(current_user).page(params[:page]).per(50)
+    else
+      @tweets = @q.result(distinct: true).order("created_at DESC").page(params[:page]).per(50)
+    end 
   end
 
   # GET /tweets/1 or /tweets/1.json

@@ -3,6 +3,15 @@
 <%end%> 
 <div class="container" >
   <h1 style="color:blue">Tweets<i class="fab fa-twitter"></i></h1>
+
+  <%= search_form_for @q do |f| %>
+    <div class="field">
+      <%= f.label :content_cont, "Search: "%>
+      <%= f.search_field :content_cont %>
+    </div>
+    <div class="actions"><%= f.submit "Search" %></div>
+  <% end %>
+
   <% @tweets.each do |tweet| %>
     <div style="border: PowderBlue 2px solid;border-radius: 20px; padding: 20px; ">
       <div align="left" >
@@ -44,8 +53,20 @@
           <%= link_to "#{tweet.user.user_name} ha retweeteado", tweet.retweet_ref  %>
       <% end %> 
       </div> 
+
+      <% if  user_signed_in?%>
+        <% if pre_follow(tweet.user) %>
+          <%= link_to 'Unfollow', unfollow_user_path(tweet.user.id), method: :delete  %>
+        <% else %>
+          <%= link_to 'Follow', follow_user_path(tweet.user.id), method: :post  %>
+        <% end %>
+      <% end %>
+       
     </div>
+    
   <% end %>
   
   <%= paginate @tweets%>
+  <%= link_to_next_page @tweets, 'Show More Tweets' %>
+    <%= link_to_prev_page @tweets, 'Show Previous Tweets' %>
 </div>
