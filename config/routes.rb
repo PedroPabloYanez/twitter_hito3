@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :tweets do
@@ -15,11 +16,13 @@ Rails.application.routes.draw do
   end
   
   
+  get 'search', to: 'search#index'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
     } 
   root "tweets#index"
+  get 'friends', to: 'friends#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
