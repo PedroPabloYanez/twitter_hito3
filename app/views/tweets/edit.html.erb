@@ -1,8 +1,8 @@
 <h1>Editing Tweet</h1>
 
 <%= render 'form', tweet: @tweet %>
-<button type="button" class="btn btn-outline-primary"><%= link_to 'Show', @tweet %></button>
 
-
-<button type="button" class="btn btn-outline-primary"><%= link_to 'Back', tweets_path %></button>
+<%= button_to "Show", @tweet,  :class => "inbox-sf-add-btn tip", :method => :get %>
+<br>
+<%= button_to "Back", tweets_path,  :class => "inbox-sf-add-btn tip", :method => :get %>
 

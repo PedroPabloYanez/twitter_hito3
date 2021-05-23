@@ -1,7 +1,7 @@
 <div>
 <%= button_to "Back", tweets_path,  :class => "inbox-sf-add-btn tip", :method => :get %>
     <% if @tweets.exists? %>
-      <h1>Results</h1>
+      <h1>Results of:</h1>
     <% else %>
       <h1>Oop! No matching posts ...</h1>
     <% end %>
