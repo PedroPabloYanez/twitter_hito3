@@ -12,6 +12,8 @@
     <div class="actions"><%= f.submit "Search" %></div>
   <% end %>
 
+
+
   <% @tweets.each do |tweet| %>
     <div style="border: PowderBlue 2px solid;border-radius: 20px; padding: 20px; ">
       <div align="left" >
@@ -21,6 +23,7 @@
 
       <div align="left", top: 50px;>
         <b>Tweets: <%= tweet.content %></b>
+         <%#= sanitize 'Hola, mi nombre es Oscar, y ando modo spinning full power :D <a href="https://www.facebook.com/spinning target="_blank">#spinning</a> <a href="https://www.facebook.com/power target="_blank">#power</a> <a href="https://www.facebook.com/fullpower target="_blank">#fullpower</a> <a href="https://www.facebook.com/insanity target="_blank">#insanity</a> ' %></b>
       </div>
               
       <div align="left" style="margin: 10px 0 ">
@@ -34,7 +37,7 @@
         <% end %>
         <%= tweet.retweet %>
         <%= tweet.likes.count %>   
-        <% if  user_signed_in?%>
+        <% if  user_signed_in?%> <!--<% #if signed_in? && current_user != nil %>  condicion para tener abiero el admin y localhost-->
           <% if like(tweet, current_user) %>
             <%= link_to tweet_like_path(tweet, like(tweet, current_user)), method: :delete do %>
               <i class="fas fa-heart"></i>
@@ -54,14 +57,23 @@
       <% end %> 
       </div> 
 
-      <% if  user_signed_in?%>
-        <% if pre_follow(tweet.user) %>
-          <%= link_to 'Unfollow', unfollow_user_path(tweet.user.id), method: :delete  %>
-        <% else %>
-          <%= link_to 'Follow', follow_user_path(tweet.user.id), method: :post  %>
-        <% end %>
-      <% end %>
+     
        
+
+    <section id="all-links"  align="left">
+      <% if  user_signed_in? %>
+      <% if pre_follow(tweet.user) %>
+          <h5><%= link_to "Unfollow", unfollow_user_path(tweet.user.id), method: :delete %></h5>
+      <% else %>
+          <h5><%= link_to "Follow", follow_user_path(tweet.user.id), method: :post  %></h5>
+          <h5>Seguidores<%=  current_user.follow_user_path(tweet.user.id).count %></h5>
+      <% end%>
+      <% end%>
+      <br>
+    </section>
+
+
+
     </div>
     
   <% end %>

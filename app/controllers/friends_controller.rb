@@ -12,5 +12,17 @@ class FriendsController < ApplicationController
         friend = Friend.find_by(friend_id: params[:id], user_id: current_user)
         friend.destroy 
         redirect_to root_path, notice: "ya no sigues a este usuario"
-    end    
+    end   
+    
+    # def follow
+    #     @user = User.find(params[:id])
+    #     current_user.followees << @user
+    #     redirect_back(fallback_location: user_path(@user))
+    #   end
+      
+    #   def unfollow
+    #     @user = User.find(params[:id])
+    #     current_user.followed_users.find_by(followee_id: @user.id).destroy
+    #     redirect_back(fallback_location: user_path(@user))
+    #   end
 end

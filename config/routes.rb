@@ -8,6 +8,15 @@ Rails.application.routes.draw do
       post 'retweet'
     end
   end
+
+  namespace :api do
+    resources :tweets
+  end
+  
+  get '/api/news', to: 'api/apis#index'
+  get "/api/:date1/:date2", to: 'api/apis#date'
+  post '/api/create', to: 'api/apis#create'
+  #get "/api/:date1/:date2", to: 'api/tweets#date'
   
   devise_scope :user do
     post 'follow/:id', to: 'friends#follow', as: 'follow_user'
