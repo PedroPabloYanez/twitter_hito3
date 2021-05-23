@@ -68,16 +68,18 @@
 
     <div align="right" style="margin: 0px 55px 0px">
       <% if !tweet.rt_ref.nil? %>
-        <%= link_to "#{tweet.user.user_name} ha retweeteado", tweet.retweet_ref  %>
+        <%= link_to "#{tweet.user.user_name} ha retweeteado a #{name(tweet.rt_ref)}", tweet.retweet_ref %>
       <% end %> 
     </div>   
 
     <section id="all-links"  align="left">
       <% if  user_signed_in? %>
       <% if pre_follow(tweet.user) %>
-          <h5><%= link_to "Unfollow", unfollow_user_path(tweet.user.id), method: :delete %></h5>
+      <%= button_to "Unfollow", unfollow_user_path(tweet.user.id),  :class => "inbox-sf-add-btn tip", :method => :delete %>
+          
       <% else %>
-          <h5><%= link_to "Follow", follow_user_path(tweet.user.id), method: :post  %></h5>
+      <%= button_to "Follow", unfollow_user_path(tweet.user.id),  :class => "inbox-sf-add-btn tip", :method => :post %>
+          
       <% end%>
       <% end%>
       <br>

@@ -1,5 +1,6 @@
 <div class="container" >
   <h1 style="color:blue">Tweets<i class="fab fa-twitter"></i></h1>
+  <%= button_to "Back", tweets_path,  :class => "inbox-sf-add-btn tip", :method => :get %>
   <!--Buscador de Contenido y Hashtag-->
 <div class="d-flex align-items-end">
   <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
@@ -48,13 +49,13 @@
       </div>
       <div align="right" style="margin: 0px 55px 0px">
         <% if !tweet.rt_ref.nil? %>
-          <%= link_to "#{tweet.user.user_name} ha retweeteado", tweet.retweet_ref  %>
+          <%= link_to "#{tweet.user.user_name} ha retweeteado ", tweet.retweet_ref  %>
         <% end %> 
       </div>
       <section id="all-links"  align="left">
         <% if  user_signed_in? %>
           <% if pre_follow(tweet.user) %>
-              <h5><%= link_to "Unfollow", unfollow_user_path(tweet.user.id), method: :delete %></h5>
+              <%= button_to "Unfollow", unfollow_user_path(tweet.user.id),  :class => "inbox-sf-add-btn tip", :method => :delete %>
           <% else %>
               <h5><%= link_to "Follow", follow_user_path(tweet.user.id), method: :post  %></h5>
           <% end%>

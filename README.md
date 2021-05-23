@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pasos para entrar en:
 
-Things you may want to cover:
+- Heroku: https://vast-badlands-44572.herokuapp.com/
 
-* Ruby version
+- Para entrar como administrador: https://vast-badlands-44572.herokuapp.com/admin/login. 
+	- user: admin@gmail.com
+	- password: 123456
+	
+- API: https://radiant-headland-62904.herokuapp.com/api/news
+	- user: pedro
+	- password: yanez
+	
+- Se pude ver en pantalla tweets/index, todos los usuarios registrados, al apretra el link "Views my Friends", se observa los amigos al cual estas siguiendo.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Al seleccionar "Edit Profile",se puede editar el ususario.

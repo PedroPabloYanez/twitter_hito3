@@ -10,6 +10,11 @@ class Tweet < ApplicationRecord
         Tweet.find(self.rt_ref)
     end
 
+    def 
+    
+    def to_s
+        name
+    end
 
     def create_hash_tags
         extract_name_hash_tags.each do |name|

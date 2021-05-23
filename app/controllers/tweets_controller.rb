@@ -25,7 +25,7 @@ class TweetsController < ApplicationController
     @q = Tweet.ransack(params[:q])
     @tweet = Tweet.new
     @tweets = @q.result(distinct: true).order("created_at DESC").page(params[:page]).per(50)
-    
+  
   end
 
   # GET /tweets/1 or /tweets/1.json
