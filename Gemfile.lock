@@ -158,6 +158,7 @@ GEM
     nokogiri (1.11.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.2.3)
     public_suffix (4.0.6)
     puma (3.12.6)
     racc (1.5.2)
@@ -268,6 +269,7 @@ DEPENDENCIES
   kaminari!
   kaminari-bootstrap
   listen (>= 3.0.5, < 3.2)
+  pg
   puma (~> 3.11)
   rails (~> 5.2.5)
   ransack
