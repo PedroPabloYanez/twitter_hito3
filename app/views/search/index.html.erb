@@ -1,0 +1,28 @@
+<div> 
+    <% if @tweets.exists? %>
+      <h1>Results</h1>
+    <% else %>
+      <h1>Oop! No matching posts ...</h1>
+    <% end %>
+    <div class="container">
+      <% @tweets.each do |tweet|%>
+        <div style="border: PowderBlue 2px solid;border-radius: 20px; margin-top:20px; padding: 30px; max-width: 540px;">
+          <img src="<%= tweet.user&.user_photo %>" width="100" height="100" style="margin: 10px 0"  >
+          <b>User:</b> <%= tweet.user&.user_name %><br>
+          <b>Tweet: <% tweet.content.to_s.split(' ').each do |word| %>
+                          <% if word.start_with?('#') %>
+                            <%= link_to word, search_path(query: word) %>
+                          <%else %>
+                            <%= word %>
+                          <%end %>
+                        <% end %>
+                        | <%= link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet%>
+          </div>
+      <% end %>
+    </div>
+    <div class="pagination justify-content-center py-4">
+    <%= paginate @tweets%>
+        <%= link_to_next_page @tweets, 'Mostrar más tweets' %>
+    </div>
+</div>
+

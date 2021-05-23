@@ -15,7 +15,7 @@ class Api::ApisController < ApplicationController
     def date
         first_date = params[:date1]
         last_date = params[:date2]
-        @tweets = Tweet.where(:created_at => first_date..last_date)
+        @tweets = Tweet.where(:created_at => first_date.to_date.beginning_of_day..last_date.to_date.end_of_day)
         render json: @tweets
     end
   
