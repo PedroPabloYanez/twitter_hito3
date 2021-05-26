@@ -15,3 +15,5 @@ Pasos para entrar en:
 - Se pude ver en pantalla tweets/index, todos los usuarios registrados, al apretra el link "Views my Friends", se observa los amigos al cual estas siguiendo.
 
 - Al seleccionar "Edit Profile",se puede editar el ususario.
+
+- El usuario si no está conectado no puedo editar o eliminar sus propios Tweets, al momento de entrar, solo puede editar sus propios Tweets, ademas no puede seguirse así mismo.

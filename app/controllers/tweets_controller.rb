@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[ show edit update destroy retweet]
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy, :retweet]
   skip_before_action :verify_authenticity_token  
 
   def retweet

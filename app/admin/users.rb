@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+  actions :all, only: [:update, :destroy, :show]
   permit_params :user_name, :email, :user_photo
 
   index do
