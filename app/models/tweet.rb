@@ -5,6 +5,7 @@ class Tweet < ApplicationRecord
     has_many :tweet_hash_tags
     has_many :hash_tags, through: :tweet_hash_tags
     after_commit :create_hash_tags, on: :create
+    has_many :retweets, class_name: 'Tweet', foreign_key: 'rt_ref', dependent: :destroy
 
     def retweet_ref
         Tweet.find(self.rt_ref)

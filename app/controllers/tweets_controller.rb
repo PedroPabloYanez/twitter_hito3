@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
 
   def retweet
     redirect_to root_path, alert: 'no es posible hacer retweet' and return if @tweet.user == current_user
-    retwetted = Tweet.new(content: @tweet.content)
+    retwetted = Tweet.new(content: @tweet.content,image: @tweet.image)
     retwetted.user = current_user
     retwetted.rt_ref = @tweet.id
     if retwetted.save
@@ -86,6 +86,6 @@ class TweetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tweet_params
-      params.require(:tweet).permit(:content, :user_id)
+      params.require(:tweet).permit(:content, :user_id, :image)
     end
 end
