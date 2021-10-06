@@ -68,5 +68,3 @@ gem 'activeadmin'
 
 gem 'ransack'
 
-
-gem 'mailcatcher'
