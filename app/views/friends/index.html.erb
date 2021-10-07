@@ -2,10 +2,10 @@
   <h1 style="color:blue">Tweets<i class="fab fa-twitter"></i></h1>
   <%= button_to "Back", tweets_path,  :class => "inbox-sf-add-btn tip", :method => :get %>
   <!--Buscador de Contenido y Hashtag-->
-<div class="d-flex align-items-end">
-  <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+<div class="d-flex ">
+  <%= form_with url: search_path, method: :get, local: true do |form| %>
     <%= form.text_field :query, value: params[:query], class: 'form-control me-2', placeholder: '#search' %>
-      <div class="actions"><%= form.submit "Search" %></div>
+      <div class="actions "><%= form.submit "Search" %></div>
   <% end %>
 </div>
 
@@ -84,7 +84,7 @@ Followers: <%= get_friends(current_user, false) %>
             <div align="right" style="margin: 0px 55px 0px">
               <% if !tweet.rt_ref.nil? %>
                 <%= link_to "#{tweet.user.user_name} hizo un retweet a #{name(tweet.rt_ref)}", tweet.retweet_ref %>
-                <%= image_tag(photo(tweet.rt_ref),width:"40", height:"40",class:"rounded-circle mb-2") %>
+                <%= image_tag(photo(tweet.rt_ref),width:"40", height:"40",class:"rounded mb-2") %>
               <% end %> 
             </div>
           </div>   

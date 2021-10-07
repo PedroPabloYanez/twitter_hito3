@@ -68,3 +68,7 @@ gem 'activeadmin'
 
 gem 'ransack'
 
+
+gem "aws-sdk-s3", require: false
+gem 'image_processing'
+gem 'mini_magick', '~> 4.8'

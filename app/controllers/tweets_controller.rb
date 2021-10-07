@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy, :retweet]
-  skip_before_action :verify_authenticity_token  
-
+  skip_before_action :verify_authenticity_token
+  
   def retweet
     redirect_to root_path, alert: 'no es posible hacer retweet' and return if @tweet.user == current_user
     retwetted = Tweet.new(content: @tweet.content,image: @tweet.image)
@@ -25,7 +25,7 @@ class TweetsController < ApplicationController
     @q = Tweet.ransack(params[:q])
     @tweet = Tweet.new
     @tweets = @q.result(distinct: true).order("created_at DESC").page(params[:page]).per(50)
-  
+    
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -86,6 +86,6 @@ class TweetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tweet_params
-      params.require(:tweet).permit(:content, :user_id, :image)
+      params.require(:tweet).permit(:content, :user_id, :image, :photo)
     end
 end
